@@ -1,5 +1,13 @@
-import NavigationBar from "./NavigationBar";
+import { Outlet } from "react-router-dom";
+import TopNavigation from "./TopNavigation";
+import { Fragment } from "react";
 
 export default function MainContainer() {
-    return <NavigationBar />
+  return (
+    <Fragment>
+      <TopNavigation />
+
+      <Outlet />
+    </Fragment>
+  );
 }
