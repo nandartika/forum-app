@@ -4,10 +4,12 @@ import BottomNavigation from "./BottomNavigation";
 
 export default function MainContainer() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray">
       <TopNavigation />
 
-      <Outlet />
+      <main className="mx-auto max-w-screen-md py-16 bg-primary h-screen">
+        <Outlet />
+      </main>
 
       <BottomNavigation />
     </div>
