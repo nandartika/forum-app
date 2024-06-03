@@ -1,13 +1,15 @@
 import { Outlet } from "react-router-dom";
 import TopNavigation from "./TopNavigation";
-import { Fragment } from "react";
+import BottomNavigation from "./BottomNavigation";
 
 export default function MainContainer() {
   return (
-    <Fragment>
+    <div className="min-h-screen">
       <TopNavigation />
 
       <Outlet />
-    </Fragment>
+
+      <BottomNavigation />
+    </div>
   );
 }
