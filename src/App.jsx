@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./layouts/MainContainer";
 import { Provider } from "react-redux";
 import store from "./core/states";
+import ThreadsPage from "./pages/threads/ThreadsPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -11,7 +12,7 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: <h1>Threads Page</h1>,
+          element: <ThreadsPage />,
         },
         {
           path: "threads/:threadId",

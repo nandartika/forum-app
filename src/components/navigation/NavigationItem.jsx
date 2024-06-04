@@ -9,7 +9,7 @@ export default function NavigationItem({ label, children, toggleOnClick }) {
       className="flex w-fit flex-col items-center gap-0.5"
       onClick={toggleOnClick}
     >
-      <div className="w-fit">{cloneChild}</div>
+      {cloneChild}
       <p className="text-sm">{label}</p>
     </div>
   );

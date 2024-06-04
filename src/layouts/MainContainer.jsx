@@ -7,7 +7,7 @@ export default function MainContainer() {
     <div className="min-h-screen bg-gray">
       <TopNavigation />
 
-      <main className="mx-auto max-w-screen-md py-16 bg-primary h-screen">
+      <main className="mx-auto min-h-screen max-w-screen-md bg-primary py-16">
         <Outlet />
       </main>
 
