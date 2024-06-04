@@ -13,7 +13,7 @@ export default function ReactionButton({ children, icon, onClickHanler }) {
 }
 
 ReactionButton.propTypes = {
-  children: PropTypes.oneOf([PropTypes.string, PropTypes.number]).isRequired,
+  children: PropTypes.number.isRequired,
   icon: PropTypes.object.isRequired,
   onClickHanler: PropTypes.func,
 };

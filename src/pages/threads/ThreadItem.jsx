@@ -74,7 +74,7 @@ ThreadItem.propTypes = {
   category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   ownerId: PropTypes.string.isRequired,
-  upVotesBy: PropTypes.number.isRequired,
-  downVotesBy: PropTypes.number.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
 };

@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { asyncReceiveThreads } from "../../core/states/threads/action";
 import { useEffect } from "react";
 import ThreadsList from "./ThreadsList";
+import PageTitle from "../../components/common/PageTitle";
+import CategoryList from "../../components/category/CategoryList";
 
 export default function ThreadsPage() {
   const dispatch = useDispatch();
@@ -12,10 +14,13 @@ export default function ThreadsPage() {
 
   return (
     <section className="p-8">
-      <header>{/* TODO: Create Popular Categori */}</header>
+      <header>
+        <p className="text-md">Kategori popular</p>
+        <CategoryList />
+      </header>
 
       <div className="my-8">
-        <h2 className="text-2xl font-semibold">Diskusi Tersedia</h2>
+        <PageTitle>Diskusi Tersedia</PageTitle>
 
         <ThreadsList />
       </div>
