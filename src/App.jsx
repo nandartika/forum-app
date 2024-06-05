@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "./core/states";
 import ThreadsPage from "./pages/threads/ThreadsPage";
 import LeaderboardsPage from "./pages/leaderboards/LeaderboardsPage";
+import DetailThreadPage from "./pages/detailThread/DetailThreadPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,7 @@ export default function App() {
         },
         {
           path: "threads/:threadId",
+          element: <DetailThreadPage />,
         },
         {
           path: "leaderboards",

@@ -5,5 +5,5 @@ export default function SectionPage({ children }) {
 }
 
 SectionPage.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.any.isRequired,
 };

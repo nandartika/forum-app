@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import CategoryItem from "../../components/category/CategoryItem";
 import { Link } from "react-router-dom";
 import ReactionButton from "../../components/button/ReactionButton";
-import VoteUpOutlineIcon from "../../assets/icons/thumb-up.svg?react";
-// import VoteUpFillIcon from "../../assets/icons/thumb-up-fill.svg?react";
-// import VoteDownFillIcon from "../../assets/icons/thumb-down-fill.svg?react";
-import VoteDownOutlineIcon from "../../assets/icons/thumb-down.svg?react";
+
 import ReplyIcon from "../../assets/icons/reply.svg?react";
 import timeSinceUtil from "../../core/utils/timeSinceUtil";
 import { useSelector } from "react-redux";
+import ThreadBody from "../../components/thread/ThreadBody";
+import VoteButton from "../../components/button/VoteButton";
 
 export default function ThreadItem({
   id,
@@ -24,9 +23,9 @@ export default function ThreadItem({
   const users = useSelector((state) => state.users);
   const ownerName = users.find((user) => user.id === ownerId)?.name;
 
-  const upVoteHanlder = () => {};
+  const upVoteToggle = () => {};
 
-  const downVotesHandler = () => {};
+  const downVoteToggle = () => {};
 
   return (
     <div className="mb-2 flex flex-col gap-2 border-b border-b-[#d1d5db] py-2">
@@ -34,7 +33,7 @@ export default function ThreadItem({
         <CategoryItem>{category}</CategoryItem>
         <h4>
           <Link
-            to={`/thread/${id}`}
+            to={`/threads/${id}`}
             className="text-blue-600 hover:text-gray-800 visited:text-purple-600 text-lg font-medium"
           >
             {title}
@@ -42,25 +41,15 @@ export default function ThreadItem({
         </h4>
       </header>
 
-      <div
-        className="line-clamp-4 text-sm"
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
+      <ThreadBody className="line-clamp-4">{body}</ThreadBody>
 
       <footer className="mb-2 flex flex-row gap-3 text-sm">
-        <ReactionButton
-          icon={<VoteUpOutlineIcon />}
-          onClickHanler={upVoteHanlder}
-        >
-          {upVotesBy.length}
-        </ReactionButton>
-
-        <ReactionButton
-          icon={<VoteDownOutlineIcon />}
-          onClickHanler={downVotesHandler}
-        >
-          {downVotesBy.length}
-        </ReactionButton>
+        <VoteButton
+          upVotesBy={upVotesBy}
+          downVotesBy={downVotesBy}
+          upVoteClickHandler={upVoteToggle}
+          downVoteCLickHandler={downVoteToggle}
+        />
 
         <ReactionButton icon={<ReplyIcon />}>{totalComments}</ReactionButton>
 
