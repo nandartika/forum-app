@@ -5,6 +5,7 @@ import ThreadsList from "./ThreadsList";
 import PageTitle from "../../components/common/PageTitle";
 import CategoryList from "../../components/category/CategoryList";
 import { asyncReceiveUsers } from "../../core/states/users/actions";
+import SectionPage from "../../components/common/SectionPage";
 
 export default function ThreadsPage() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function ThreadsPage() {
   }, [dispatch]);
 
   return (
-    <section className="p-8">
+    <SectionPage>
       <header>
         <p className="text-md">Kategori popular</p>
         <CategoryList />
@@ -26,6 +27,6 @@ export default function ThreadsPage() {
 
         <ThreadsList />
       </div>
-    </section>
+    </SectionPage>
   );
 }

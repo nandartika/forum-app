@@ -3,6 +3,7 @@ import MainContainer from "./layouts/MainContainer";
 import { Provider } from "react-redux";
 import store from "./core/states";
 import ThreadsPage from "./pages/threads/ThreadsPage";
+import LeaderboardsPage from "./pages/leaderboards/LeaderboardsPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -19,7 +20,7 @@ export default function App() {
         },
         {
           path: "leaderboards",
-          element: <h1>Leaderboards</h1>,
+          element: <LeaderboardsPage />,
         },
         {
           path: "new",
