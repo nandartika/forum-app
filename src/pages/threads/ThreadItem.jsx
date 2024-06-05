@@ -8,6 +8,7 @@ import VoteUpOutlineIcon from "../../assets/icons/thumb-up.svg?react";
 import VoteDownOutlineIcon from "../../assets/icons/thumb-down.svg?react";
 import ReplyIcon from "../../assets/icons/reply.svg?react";
 import timeSinceUtil from "../../core/utils/timeSinceUtil";
+import { useSelector } from "react-redux";
 
 export default function ThreadItem({
   id,
@@ -20,6 +21,9 @@ export default function ThreadItem({
   downVotesBy,
   totalComments,
 }) {
+  const users = useSelector((state) => state.users);
+  const ownerName = users.find((user) => user.id === ownerId).name;
+
   const upVoteHanlder = () => {};
 
   const downVotesHandler = () => {};
@@ -61,7 +65,9 @@ export default function ThreadItem({
         <ReactionButton icon={<ReplyIcon />}>{totalComments}</ReactionButton>
 
         <p>{timeSinceUtil(createdAt)}</p>
-        <p>{ownerId}</p>
+        <p>
+          Dibuat oleh <strong>{ownerName}</strong>
+        </p>
       </footer>
     </div>
   );
