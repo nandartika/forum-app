@@ -22,7 +22,7 @@ export default function ThreadItem({
   totalComments,
 }) {
   const users = useSelector((state) => state.users);
-  const ownerName = users.find((user) => user.id === ownerId).name;
+  const ownerName = users.find((user) => user.id === ownerId)?.name;
 
   const upVoteHanlder = () => {};
 

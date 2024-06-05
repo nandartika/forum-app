@@ -20,3 +20,12 @@ axiosApi.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+axiosApi.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);

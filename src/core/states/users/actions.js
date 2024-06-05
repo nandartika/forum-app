@@ -17,7 +17,7 @@ function asyncReceiveUsers() {
   return async (dispatch) => {
     try {
       const { data } = await getAllUsers();
-      dispatch(receiveUsersActionCreator(data.data.users));
+      dispatch(receiveUsersActionCreator(data.users));
     } catch (error) {
       alert(error);
     }
