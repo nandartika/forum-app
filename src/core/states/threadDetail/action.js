@@ -15,8 +15,8 @@ function receiveThreadDetailActionCreator(threadDetail) {
 
 function asyncThreadDetail(threadId) {
   return async (dispatch) => {
-    const { data } = await getDetailThread(threadId);
-    dispatch(receiveThreadDetailActionCreator(data.detailThread));
+    const { detailThread } = await getDetailThread(threadId);
+    dispatch(receiveThreadDetailActionCreator(detailThread));
   };
 }
 

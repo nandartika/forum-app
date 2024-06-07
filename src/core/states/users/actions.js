@@ -4,6 +4,7 @@ const ActionType = {
   RECEIVE_USERS: "RECEIVE_USERS",
   SET_PROFILE: "SET_PROFILE",
   SET_IS_PRELOAD: "SET_IS_PRELOAD",
+  UNSET_AUTH_USER: "UNSET_AUTH_USER",
 };
 
 function receiveUsersActionCreator(users) {
@@ -30,8 +31,8 @@ function setIsPreloadActionCreator(isPrelaod) {
 function asyncReceiveUsers() {
   return async (dispatch) => {
     try {
-      const { data } = await getAllUsers();
-      dispatch(receiveUsersActionCreator(data.users));
+      const { users } = await getAllUsers();
+      dispatch(receiveUsersActionCreator(users));
     } catch (error) {
       alert(error);
     }
@@ -66,6 +67,13 @@ function asyncSetIsPreload() {
   };
 }
 
+function asyncUnsetAuthUser() {
+  return async (dispatch) => {
+    dispatch(setProfileActionCreator(null));
+    localStorage.clear();
+  };
+}
+
 export {
   ActionType,
   receiveUsersActionCreator,
@@ -73,4 +81,5 @@ export {
   asyncReceiveUsers,
   asyncLogin,
   asyncSetIsPreload,
+  asyncUnsetAuthUser,
 };

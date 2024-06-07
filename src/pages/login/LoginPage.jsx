@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import PageTitle from "../../components/common/PageTitle";
 import SectionPage from "../../components/common/SectionPage";
 import TextInput from "../../components/input/TextInput";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncLogin } from "../../core/states/users/actions";
+import { useEffect } from "react";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { profile } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    if (profile) navigate("/");
+  }, [navigate, profile]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();

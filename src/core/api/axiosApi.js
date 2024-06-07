@@ -10,9 +10,9 @@ export const axiosApi = axios.create({
 axiosApi.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
-
+    
     if (token) {
-      config.headers.Authorization = `Baerer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -23,7 +23,7 @@ axiosApi.interceptors.request.use(
 
 axiosApi.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response.data.data;
   },
   (error) => {
     return Promise.reject(error);

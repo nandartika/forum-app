@@ -1,43 +1,20 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainContainer from "./layouts/MainContainer";
-import ThreadsPage from "./pages/threads/ThreadsPage";
-import LeaderboardsPage from "./pages/leaderboards/LeaderboardsPage";
-import DetailThreadPage from "./pages/detailThread/DetailThreadPage";
-import LoginPage from "./pages/login/LoginPage";
+import { RouterProvider } from "react-router-dom";
+import { mainRoute } from "./routes/mainRoute";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { asyncSetIsPreload } from "./core/states/users/actions";
 
 export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainContainer />,
-      children: [
-        {
-          path: "/",
-          element: <ThreadsPage />,
-        },
-        {
-          path: "threads/:threadId",
-          element: <DetailThreadPage />,
-        },
-        {
-          path: "leaderboards",
-          element: <LeaderboardsPage />,
-        },
-        {
-          path: "new",
-          element: <h1>New Discussion Page</h1>,
-        },
-        {
-          path: "register",
-          element: <h1>Register Page</h1>,
-        },
-        {
-          path: "login",
-          element: <LoginPage />,
-        },
-      ],
-    },
-  ]);
+  const { isPreload = false } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
 
-  return <RouterProvider router={router} />;
+  useEffect(() => {
+    dispatch(asyncSetIsPreload());
+  }, [dispatch]);
+
+  if (isPreload) {
+    return null;
+  }
+
+  return <RouterProvider router={mainRoute} />;
 }

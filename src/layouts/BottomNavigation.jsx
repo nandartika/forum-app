@@ -4,9 +4,15 @@ import LeaderboardsIcon from "../assets/icons/leaderboards.svg?react";
 import LoginIcon from "../assets/icons/login.svg?react";
 import LogoutIcon from "../assets/icons/logout.svg?react";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncUnsetAuthUser } from "../core/states/users/actions";
 
 export default function BottomNavigation() {
-  const logoutHandler = () => {};
+  const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.users);
+  const logoutHandler = () => {
+    dispatch(asyncUnsetAuthUser());
+  };
 
   return (
     <footer>
@@ -27,18 +33,21 @@ export default function BottomNavigation() {
                 </NavigationItem>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/login">
-                <NavigationItem label="Login">
-                  <LoginIcon />
+            {profile ? (
+              <li>
+                <NavigationItem label="Logout" toggleOnClick={logoutHandler}>
+                  <LogoutIcon />
                 </NavigationItem>
-              </NavLink>
-            </li>
-            <li>
-              <NavigationItem label="Logout" toggleOnClick={logoutHandler}>
-                <LogoutIcon />
-              </NavigationItem>
-            </li>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login">
+                  <NavigationItem label="Login">
+                    <LoginIcon />
+                  </NavigationItem>
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

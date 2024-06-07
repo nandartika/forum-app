@@ -14,8 +14,8 @@ function receiveThreadsActionCreator(threads) {
 function asyncReceiveThreads() {
   return async (dispatch) => {
     try {
-      const { data } = await getAllThreads();
-      dispatch(receiveThreadsActionCreator(data.threads));
+      const { threads } = await getAllThreads();
+      dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
       alert(error);
     }
