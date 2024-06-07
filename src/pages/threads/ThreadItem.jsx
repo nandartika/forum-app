@@ -20,7 +20,7 @@ export default function ThreadItem({
   downVotesBy,
   totalComments,
 }) {
-  const users = useSelector((state) => state.users);
+  const { list: users } = useSelector((state) => state.users);
   const ownerName = users.find((user) => user.id === ownerId)?.name;
 
   const upVoteToggle = () => {};

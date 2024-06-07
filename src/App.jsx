@@ -1,10 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./layouts/MainContainer";
-import { Provider } from "react-redux";
-import store from "./core/states";
 import ThreadsPage from "./pages/threads/ThreadsPage";
 import LeaderboardsPage from "./pages/leaderboards/LeaderboardsPage";
 import DetailThreadPage from "./pages/detailThread/DetailThreadPage";
+import LoginPage from "./pages/login/LoginPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -34,15 +33,11 @@ export default function App() {
         },
         {
           path: "login",
-          element: <h1>Login Page</h1>,
+          element: <LoginPage />,
         },
       ],
     },
   ]);
 
-  return (
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  );
+  return <RouterProvider router={router} />;
 }
