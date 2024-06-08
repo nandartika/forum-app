@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { asyncThreadDetail } from "../../core/states/threadDetail/action";
+import {
+  asyncThreadDetail,
+  asyncToggleDownVoteThreadDetail,
+  asyncToggleUpVoteThreadDetail,
+} from "../../core/states/threadDetail/action";
 import SectionPage from "../../components/common/SectionPage";
 import CategoryItem from "../../components/category/CategoryItem";
 import ThreadBody from "../../components/thread/ThreadBody";
@@ -18,9 +22,13 @@ export default function DetailThreadPage() {
     dispatch(asyncThreadDetail(threadId));
   }, [dispatch, threadId]);
 
-  const upVoteToggle = () => {};
+  const upVoteToggle = () => {
+    dispatch(asyncToggleUpVoteThreadDetail());
+  };
 
-  const downVoteToggle = () => {};
+  const downVoteToggle = () => {
+    dispatch(asyncToggleDownVoteThreadDetail());
+  };
 
   return (
     threadDetail && (
