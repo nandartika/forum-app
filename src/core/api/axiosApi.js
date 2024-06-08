@@ -4,7 +4,7 @@ const BASE_URL = "https://forum-api.dicoding.dev/v1";
 
 export const axiosApi = axios.create({
   baseURL: BASE_URL,
-  timeout: 3000,
+  timeout: 5000,
 });
 
 axiosApi.interceptors.request.use(

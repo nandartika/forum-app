@@ -5,9 +5,10 @@ import ReactionButton from "../../components/button/ReactionButton";
 
 import ReplyIcon from "../../assets/icons/reply.svg?react";
 import timeSinceUtil from "../../core/utils/timeSinceUtil";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ThreadBody from "../../components/thread/ThreadBody";
 import VoteButton from "../../components/button/VoteButton";
+import { asyncToggleDownVote, asyncToggleUpVote } from "../../core/states/threads/action";
 
 export default function ThreadItem({
   id,
@@ -20,12 +21,17 @@ export default function ThreadItem({
   downVotesBy,
   totalComments,
 }) {
+  const dispatch = useDispatch();
   const { list: users } = useSelector((state) => state.users);
   const ownerName = users.find((user) => user.id === ownerId)?.name;
 
-  const upVoteToggle = () => {};
+  const upVoteToggle = () => {
+    dispatch(asyncToggleUpVote(id));
+  };
 
-  const downVoteToggle = () => {};
+  const downVoteToggle = () => {
+    dispatch(asyncToggleDownVote(id))
+  };
 
   return (
     <div className="mb-2 flex flex-col gap-2 border-b border-b-[#d1d5db] py-2">
