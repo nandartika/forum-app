@@ -2,6 +2,11 @@ import PropTypes from "prop-types";
 import VoteButton from "../../components/button/VoteButton";
 import timeSinceUtil from "../../core/utils/timeSinceUtil";
 import ThreadBody from "../../components/thread/ThreadBody";
+import { useDispatch } from "react-redux";
+import {
+  asyncToggleDownVoteComment,
+  asyncToggleUpVoteComment,
+} from "../../core/states/threadDetail/action";
 
 export default function CommentItem({
   id,
@@ -12,10 +17,15 @@ export default function CommentItem({
   downVotesBy,
 }) {
   const { name, avatar } = owner;
+  const dispatch = useDispatch();
 
-  const upVoteToggle = () => {};
+  const upVoteToggle = () => {
+    dispatch(asyncToggleUpVoteComment(id));
+  };
 
-  const downVoteToggle = () => {};
+  const downVoteToggle = () => {
+    dispatch(asyncToggleDownVoteComment(id));
+  };
 
   return (
     <div className="flex flex-col gap-2 py-4">
@@ -28,9 +38,9 @@ export default function CommentItem({
         <p>{timeSinceUtil(createdAt)}</p>
       </header>
 
-      <p className="text-md">
+      <div className="text-md">
         <ThreadBody>{content}</ThreadBody>
-      </p>
+      </div>
 
       <footer className="flex flex-row gap-3">
         <VoteButton

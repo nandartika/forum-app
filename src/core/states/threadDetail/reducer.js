@@ -24,6 +24,42 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
           : threadDetail.downVotesBy.concat([userId]),
       };
     }
+    case ActionType.TOGGLE_UP_VOTE_COMMENT: {
+      const { userId, commentId } = action.payload;
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === commentId) {
+            return {
+              ...comment,
+              upVotesBy: comment.upVotesBy.includes(userId)
+                ? comment.upVotesBy.filter((id) => id !== userId)
+                : comment.upVotesBy.concat([userId]),
+              downVotesBy: comment.downVotesBy.filter((id) => id !== userId),
+            };
+          }
+          return comment;
+        }),
+      };
+    }
+    case ActionType.TOGGLE_DOWN_VOTE_COMMENT: {
+      const { userId, commentId } = action.payload;
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === commentId) {
+            return {
+              ...comment,
+              upVotesBy: comment.upVotesBy.filter((id) => id !== userId),
+              downVotesBy: comment.downVotesBy.includes(userId)
+                ? comment.downVotesBy.filter((id) => id !== userId)
+                : comment.downVotesBy.concat([userId]),
+            };
+          }
+          return comment;
+        }),
+      };
+    }
     default:
       return threadDetail;
   }

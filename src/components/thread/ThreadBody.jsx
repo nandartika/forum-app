@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function ThreadBody({ children, className }) {
   return (
-    <div className={className} dangerouslySetInnerHTML={{ __html: children }} />
+    <p className={className} dangerouslySetInnerHTML={{ __html: children }} />
   );
 }
 
