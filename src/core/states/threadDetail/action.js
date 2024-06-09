@@ -1,3 +1,4 @@
+import { createCommentApi } from "../../api/commentApi";
 import { getDetailThread } from "../../api/threadsApi";
 import {
   downVoteCommentApi,
@@ -14,6 +15,7 @@ const ActionType = {
   TOGGLE_DOWN_VOTE_THREAD_DETAIL: "TOGGLE_DOWN_VOTE_THREAD_DETAIL",
   TOGGLE_UP_VOTE_COMMENT: "TOGGLE_UP_VOTE_COMMENT",
   TOGGLE_DOWN_VOTE_COMMENT: "TOGGLE_DOWN_VOTE_COMMENT",
+  ADD_COMMENT: "ADD_COMMENT",
 };
 
 function receiveThreadDetailActionCreator(threadDetail) {
@@ -56,6 +58,13 @@ function toggleDownVoteCommentActionCreator(userId, commentId) {
       userId,
       commentId,
     },
+  };
+}
+
+function addCommentActionCreator(comment) {
+  return {
+    type: ActionType.ADD_COMMENT,
+    payload: comment,
   };
 }
 
@@ -140,6 +149,18 @@ function asyncToggleDownVoteComment(commentId) {
   };
 }
 
+function asyncAddComment(threadId, content) {
+  return async (dispatch) => {
+    const request = { content };
+    try {
+      const { comment } = await createCommentApi(threadId, request);
+      dispatch(addCommentActionCreator(comment));
+    } catch (error) {
+      alert(error);
+    }
+  };
+}
+
 export {
   ActionType,
   receiveThreadDetailActionCreator,
@@ -148,4 +169,5 @@ export {
   asyncToggleDownVoteThreadDetail,
   asyncToggleUpVoteComment,
   asyncToggleDownVoteComment,
+  asyncAddComment,
 };

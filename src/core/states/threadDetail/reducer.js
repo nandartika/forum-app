@@ -60,6 +60,14 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
         }),
       };
     }
+    case ActionType.ADD_COMMENT:
+      return {
+        ...threadDetail,
+        comments: {
+          ...threadDetail.comments,
+          ...action.payload
+        }
+      }
     default:
       return threadDetail;
   }

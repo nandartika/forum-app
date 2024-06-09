@@ -12,6 +12,7 @@ import ThreadBody from "../../components/thread/ThreadBody";
 import timeSinceUtil from "../../core/utils/timeSinceUtil";
 import VoteButton from "../../components/button/VoteButton";
 import CommentItem from "./CommentItem";
+import CommentForm from "./CommentForm";
 
 export default function DetailThreadPage() {
   const dispatch = useDispatch();
@@ -64,18 +65,7 @@ export default function DetailThreadPage() {
         </footer>
 
         <div className="mt-6">
-          <div className="mb-8">
-            <h3 className="text-xl font-medium">Beri Komentar</h3>
-            <form>
-              <div
-                className="my-2 h-24 w-full rounded-md border"
-                contentEditable
-              />
-              <button className="h-8 w-full rounded-md bg-secondary text-primary">
-                Kirim
-              </button>
-            </form>
-          </div>
+          <CommentForm />
 
           <div className="mt-4">
             <h3 className="text-xl font-semibold">

@@ -14,9 +14,9 @@ export default function VoteButton({
   downVoteCLickHandler,
 }) {
   const { profile } = useSelector((state) => state.users);
-  const isUpVote = upVotesBy.find((vote) => vote === profile.id)?.length > 0;
+  const isUpVote = upVotesBy.find((vote) => vote === profile?.id)?.length > 0;
   const isDownVote =
-    downVotesBy.find((vote) => vote === profile.id)?.length > 0;
+    downVotesBy.find((vote) => vote === profile?.id)?.length > 0;
     
   return (
     <Fragment>
