@@ -8,7 +8,10 @@ import timeSinceUtil from "../../core/utils/timeSinceUtil";
 import { useDispatch, useSelector } from "react-redux";
 import ThreadBody from "../../components/thread/ThreadBody";
 import VoteButton from "../../components/button/VoteButton";
-import { asyncToggleDownVote, asyncToggleUpVote } from "../../core/states/threads/action";
+import {
+  asyncToggleDownVote,
+  asyncToggleUpVote,
+} from "../../core/states/threads/action";
 
 export default function ThreadItem({
   id,
@@ -30,7 +33,7 @@ export default function ThreadItem({
   };
 
   const downVoteToggle = () => {
-    dispatch(asyncToggleDownVote(id))
+    dispatch(asyncToggleDownVote(id));
   };
 
   return (
@@ -39,8 +42,8 @@ export default function ThreadItem({
         <CategoryItem>{category}</CategoryItem>
         <h4>
           <Link
-            to={`/threads/${id}`}
-            className="text-blue-600 hover:text-gray-800 visited:text-purple-600 text-lg font-medium"
+            to={`threads/${id}`}
+            className="text-blue-800 hover:text-gray-800 visited:text-purple-800 text-lg font-medium underline"
           >
             {title}
           </Link>
