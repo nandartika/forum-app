@@ -36,7 +36,13 @@ export default function LoginPage() {
       </form>
 
       <p className="mt-4">
-        Belum punya akun? <Link to="/register">Daftar di sini.</Link>
+        Belum punya akun?{" "}
+        <Link
+          to="/register"
+          className="text-blue-800 hover:text-gray-800 visited:text-purple-800 underline"
+        >
+          Daftar di sini.
+        </Link>
       </p>
     </SectionPage>
   );

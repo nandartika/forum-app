@@ -37,7 +37,13 @@ export default function RegisterPage() {
       </form>
 
       <p className="mt-4">
-        Sudah punya akun? <Link to="/login">Masuk di sini.</Link>
+        Sudah punya akun?{" "}
+        <Link
+          to="/login"
+          className="text-blue-800 hover:text-gray-800 visited:text-purple-800 underline"
+        >
+          Masuk di sini.
+        </Link>
       </p>
     </SectionPage>
   );
