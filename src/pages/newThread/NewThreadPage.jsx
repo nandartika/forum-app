@@ -1,12 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
 import PageTitle from "../../components/common/PageTitle";
 import SectionPage from "../../components/common/SectionPage";
 import TextInput from "../../components/input/TextInput";
 import { asyncNewThread } from "../../core/states/threads/action";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NewThreadPage() {
   const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.users.profile);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, [isLogin, navigate]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
