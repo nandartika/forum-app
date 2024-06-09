@@ -4,6 +4,7 @@ import LeaderboardsPage from "../pages/leaderboards/LeaderboardsPage";
 import DetailThreadPage from "../pages/detailThread/DetailThreadPage";
 import LoginPage from "../pages/login/LoginPage";
 import { createBrowserRouter } from "react-router-dom";
+import NewThreadPage from "../pages/newThread/NewThreadPage";
 
 export const mainRoute = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ export const mainRoute = createBrowserRouter([
       },
       {
         path: "new",
-        element: <h1>New Discussion Page</h1>,
+        element: <NewThreadPage />,
       },
       {
         path: "register",

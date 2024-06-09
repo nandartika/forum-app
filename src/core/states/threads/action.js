@@ -1,4 +1,4 @@
-import { getAllThreads } from "../../api/threadsApi";
+import { createThread, getAllThreads } from "../../api/threadsApi";
 import {
   downVoteThreadApi,
   neutralVoteThreadApi,
@@ -77,10 +77,21 @@ function asyncToggleDownVote(threadId) {
   };
 }
 
+function asyncNewThread(request) {
+  return async () => {
+    try {
+      await createThread(request);
+    } catch (error) {
+      alert(error);
+    }
+  };
+}
+
 export {
   ActionType,
   receiveThreadsActionCreator,
   asyncReceiveThreads,
   asyncToggleUpVote,
   asyncToggleDownVote,
+  asyncNewThread,
 };

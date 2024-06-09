@@ -6,6 +6,7 @@ import PageTitle from "../../components/common/PageTitle";
 import CategoryList from "../../components/category/CategoryList";
 import { asyncReceiveUsers } from "../../core/states/users/actions";
 import SectionPage from "../../components/common/SectionPage";
+import NewThreadButton from "../../components/button/NewThreadButton";
 
 export default function ThreadsPage() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export default function ThreadsPage() {
 
         <ThreadsList />
       </div>
+
+      <NewThreadButton />
     </SectionPage>
   );
 }
