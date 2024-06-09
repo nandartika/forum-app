@@ -5,6 +5,7 @@ import DetailThreadPage from "../pages/detailThread/DetailThreadPage";
 import LoginPage from "../pages/login/LoginPage";
 import { createBrowserRouter } from "react-router-dom";
 import NewThreadPage from "../pages/newThread/NewThreadPage";
+import RegisterPage from "../pages/register/RegisterPage";
 
 export const mainRoute = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ export const mainRoute = createBrowserRouter([
       },
       {
         path: "register",
-        element: <h1>Register Page</h1>,
+        element: <RegisterPage />,
       },
       {
         path: "login",

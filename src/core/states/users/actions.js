@@ -1,4 +1,4 @@
-import { getAllUsers, getProfile, login } from "../../api/usersApi";
+import { getAllUsers, getProfile, login, register } from "../../api/usersApi";
 
 const ActionType = {
   RECEIVE_USERS: "RECEIVE_USERS",
@@ -33,6 +33,18 @@ function asyncReceiveUsers() {
     try {
       const { users } = await getAllUsers();
       dispatch(receiveUsersActionCreator(users));
+    } catch (error) {
+      alert(error);
+    }
+  };
+}
+
+function asyncRegister(name, email, password) {
+  return async (dispatch) => {
+    const request = { name, email, password };
+    try {
+      await register(request);
+      dispatch(asyncLogin(email, password));
     } catch (error) {
       alert(error);
     }
@@ -79,6 +91,7 @@ export {
   receiveUsersActionCreator,
   setProfileActionCreator,
   asyncReceiveUsers,
+  asyncRegister,
   asyncLogin,
   asyncSetIsPreload,
   asyncUnsetAuthUser,
