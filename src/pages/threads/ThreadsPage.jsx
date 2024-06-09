@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import ThreadsList from "./ThreadsList";
 import PageTitle from "../../components/common/PageTitle";
 import CategoryList from "../../components/category/CategoryList";
-import { asyncReceiveUsers } from "../../core/states/users/actions";
 import SectionPage from "../../components/common/SectionPage";
 import NewThreadButton from "../../components/button/NewThreadButton";
 
@@ -12,7 +11,6 @@ export default function ThreadsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(asyncReceiveUsers());
     dispatch(asyncReceiveThreads());
   }, [dispatch]);
 

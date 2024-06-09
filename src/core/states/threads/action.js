@@ -1,9 +1,11 @@
 import { createThread, getAllThreads } from "../../api/threadsApi";
+import { getAllUsers } from "../../api/usersApi";
 import {
   downVoteThreadApi,
   neutralVoteThreadApi,
   upVoteThreadApi,
 } from "../../api/votesApi";
+import { receiveUsersActionCreator } from "../users/actions";
 
 const ActionType = {
   RECEIVE_THREADS: "RECEIVE_THREADS",
@@ -35,6 +37,9 @@ function toggleDownVoteThreadActionCreator(threadId, userId) {
 function asyncReceiveThreads() {
   return async (dispatch) => {
     try {
+      const { users } = await getAllUsers();
+      dispatch(receiveUsersActionCreator(users));
+      
       const { threads } = await getAllThreads();
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {

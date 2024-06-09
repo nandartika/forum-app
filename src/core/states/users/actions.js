@@ -1,4 +1,4 @@
-import { getAllUsers, getProfile, login, register } from "../../api/usersApi";
+import { getProfile, login, register } from "../../api/usersApi";
 
 const ActionType = {
   RECEIVE_USERS: "RECEIVE_USERS",
@@ -25,17 +25,6 @@ function setIsPreloadActionCreator(isPrelaod) {
   return {
     type: ActionType.SET_IS_PRELOAD,
     payload: isPrelaod,
-  };
-}
-
-function asyncReceiveUsers() {
-  return async (dispatch) => {
-    try {
-      const { users } = await getAllUsers();
-      dispatch(receiveUsersActionCreator(users));
-    } catch (error) {
-      alert(error);
-    }
   };
 }
 
@@ -90,7 +79,6 @@ export {
   ActionType,
   receiveUsersActionCreator,
   setProfileActionCreator,
-  asyncReceiveUsers,
   asyncRegister,
   asyncLogin,
   asyncSetIsPreload,
